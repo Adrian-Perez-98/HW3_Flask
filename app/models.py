@@ -1,16 +1,19 @@
 from app import db
 
+
 class User(db.Model):
     # have the following columns
     # id (int)
     id = db.Column(db.Integer, primary_key=True)
     # author (string, unique, can't be null)
     author = db.Column(db.String, nullable=False, unique=True)
+
     # message (linkd to Messages table)
-    message = db.relationship('Post', backref='author', lazy='dynamic')
+    message = db.relationship('Messages', backref='author', lazy='dynamic')
 
     def __repr__(self):
-        return f'<User {self.author}>'
+        return f'<User: {self.author}>'
+
 
 class Messages(db.Model):
     # have the following columns
@@ -18,8 +21,10 @@ class Messages(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     # message (string, not unique, can't be null)
     message = db.Column(db.String, nullable=False, unique=False)
+
     # user_id link to id (int)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+
     # write __repr__ that outputs
     def __repr__(self):
         return f'<Messages: {self.message}>'

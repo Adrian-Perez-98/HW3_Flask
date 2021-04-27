@@ -3,7 +3,7 @@ import os
 from flask_sqlalchemy import SQLAlchemy
 
 
-# include Flask class from file flaskpi
+# include Flask class from file flask
 from flask import Flask
 
 # for the location of the current file, what is its directory
