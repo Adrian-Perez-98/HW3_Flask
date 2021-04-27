@@ -19,6 +19,8 @@ def home():
             db.session.commit()
 
         message = Messages(message=form.message, user_id=user)
+        db.session.add(message)
+        db.session.commit()
 
     posts = [
         {
@@ -28,7 +30,7 @@ def home():
         {
             'author': 'Jerry',
             'message': 'Home. You?'
-        }
+        },
     ]
     # output all messages
     # create a list of dictionaries with the following structure
